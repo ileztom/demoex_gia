@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox alignment="TOP_CENTER" spacing="10.0" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.example.demo_ex.controller.ProductListController" prefWidth="1100" prefHeight="650">
+    <padding>
+        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
+    </padding>
+
+    <HBox alignment="CENTER_LEFT" spacing="10.0">
+        <Text text="Список товаров" style="-fx-font-size: 20px; -fx-font-weight: bold;" HBox.hgrow="ALWAYS"/>
+        <Label fx:id="lblUser" text="" style="-fx-font-size: 14px;"/>
+        <Button fx:id="btnLogout" text="Выход" onAction="#onLogout"/>
+    </HBox>
+
+    <HBox fx:id="filterPanel" alignment="CENTER_LEFT" spacing="10.0">
+        <TextField fx:id="txtSearch" promptText="Поиск..." HBox.hgrow="ALWAYS" prefWidth="300"/>
+        <Label text="Сортировка:"/>
+        <ComboBox fx:id="cmbSort" onAction="#onSortChanged" prefWidth="200"/>
+        <Label text="Поставщик:"/>
+        <ComboBox fx:id="cmbFilter" onAction="#onFilterChanged" prefWidth="200"/>
+        <Button fx:id="btnAddProduct" text="Добавить товар" onAction="#onAddProduct"/>
+        <Button fx:id="btnDeleteProduct" text="Удалить товар" onAction="#onDeleteProduct"/>
+        <Button fx:id="btnOrders" text="Заказы" onAction="#onOrders"/>
+    </HBox>
+
+    <TableView fx:id="productTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn text="Фото" prefWidth="100">
+                <cellValueFactory><PropertyValueFactory property="imagePath"/></cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Наименование" prefWidth="180">
+                <cellValueFactory><PropertyValueFactory property="name"/></cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Категория" prefWidth="120">
+                <cellValueFactory><PropertyValueFactory property="category"/></cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Описание" prefWidth="150">
+                <cellValueFactory><PropertyValueFactory property="description"/></cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Производитель" prefWidth="120">
+                <cellValueFactory><PropertyValueFactory property="manufacturer"/></cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Поставщик" prefWidth="120">
+                <cellValueFactory><PropertyValueFactory property="supplier"/></cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Цена" prefWidth="100">
+                <cellValueFactory><PropertyValueFactory property="price"/></cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Количество" prefWidth="80">
+                <cellValueFactory><PropertyValueFactory property="quantity"/></cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Скидка" prefWidth="80">
+                <cellValueFactory><PropertyValueFactory property="discount"/></cellValueFactory>
+            </TableColumn>
+        </columns>
+    </TableView>
+</VBox>
